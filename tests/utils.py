@@ -54,6 +54,13 @@ def save_items(items: List[Dict], filename: str) -> str:
     return path.as_posix()
 
 
-def load_item(filepath: str) -> Dict:
-    with open(filepath, 'r') as finput:
+def load_item(filename: str) -> Dict:
+    path = Path(FIXTURES_DIR, filename)
+    with open(path, 'r') as finput:
+        return json.load(finput)
+
+
+def load_items(filename: str) -> List[Dict]:
+    path = Path(FIXTURES_DIR, filename)
+    with open(path, 'r') as finput:
         return json.load(finput)
